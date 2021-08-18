@@ -47,8 +47,14 @@ const petsData = require("./pets-data.js");
  *  filterBySpecies(pets, "parakeet")
  *  > []
  */
-function filterBySpecies() {}
-
+function filterBySpecies(pets, specie) {
+    let specieArr = [];
+    for(let p of pets) {
+        if(p.species === specie) specieArr.push(p);
+    }
+    return specieArr;
+}
+console.log(filterBySpecies(petsData, "parakeet"));
 /**
  * getNamesBySpecies()
  * -----------------------------
@@ -65,8 +71,14 @@ function filterBySpecies() {}
  *  getNamesBySpecies(pets, "parakeet")
  *  > []
  */
-function getNamesBySpecies() {}
-
+function getNamesBySpecies(pets, specie) {
+    let specieArr = [];
+    for(let p of pets) {
+        if(p.species === specie) specieArr.push(p.petName);
+    }
+    return specieArr;
+}
+console.log(getNamesBySpecies(petsData, "parakeet"));
 /**
  * filterByMinAge()
  * -----------------------------
@@ -114,8 +126,14 @@ function getNamesBySpecies() {}
  *  filterByMinAge(pets, 12)
  *  > []
  */
-function filterByMinAge() {}
-
+function filterByMinAge(pets, minAge) {
+    let ageArr = [];
+    for(let p of pets) {
+        if(p.age >= minAge) ageArr.push(p);
+    }
+    return ageArr;
+}
+console.log(filterByMinAge(petsData, 12));
 /**
  * filterByMaxAge()
  * -----------------------------
@@ -163,8 +181,14 @@ function filterByMinAge() {}
  *  filterByMaxAge(pets, 0)
  *  > []
  */
-function filterByMaxAge() {}
-
+function filterByMaxAge(pets, maxAge) {
+    let ageArr = [];
+    for(let p of pets) {
+        if(p.age <= maxAge) ageArr.push(p);
+    }
+    return ageArr;
+}
+console.log(filterByMaxAge(petsData, 0));
 /**
  * findFriendsOf()
  * -----------------------------
@@ -181,8 +205,16 @@ function filterByMaxAge() {}
  *  findFriendsOf(pets, "Kevin")
  *  > []
  */
-function findFriendsOf() {}
-
+function findFriendsOf(pets, friend) {
+    let friendArr = [];
+    for(let p of pets) {
+        for(let fw of p.friendsWith) {
+            if(fw === friend) friendArr.push(p.petName);
+        }
+    }
+    return friendArr;
+}
+console.log(findFriendsOf(petsData, "Kevin"));
 /**
  * maxNumberOfFriends()
  * -----------------------------
@@ -199,4 +231,11 @@ function findFriendsOf() {}
  *  maxNumberOfFriends(pets, 0)
  *  > []
  */
-function maxNumberOfFriends() {}
+function maxNumberOfFriends(pets, maxFriends) {
+    let maxFriendArr = [];
+    for(let p of pets) {
+        if(p.friendsWith.length <= maxFriends) maxFriendArr.push(p.petName);
+    }
+    return maxFriendArr;
+}
+console.log(maxNumberOfFriends(petsData, 0));

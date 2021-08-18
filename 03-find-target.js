@@ -26,7 +26,15 @@ EXAMPLE:
  *  findPetById(pets, 100);
  *  > "Could not find pet with ID of '100'."
  */
-function findPetById() {}
+function findPetById(pets, id) {
+    let errorMessage = `Could not find pet with ID of '${id}'.`;
+    if(!pets.length) return errorMessage;
+    for(let p of pets) {
+        if(p.petId === id) return p;
+    }
+    return errorMessage;
+}
+//console.log(findPetById(petsData, 100));
 
 /**
  * findPetByName()
@@ -54,7 +62,15 @@ EXAMPLE:
  *  findPetByName(pets, "Steven");
  *  > "Could not find pet with name of 'Steven'."
  */
-function findPetByName() {}
+function findPetByName(pets, name) {
+    let errorMessage = `Could not find pet with name of '${name}'.`;
+    if(!pets.length) return errorMessage;
+    for(let p of pets) {
+        if(p.petName === name) return p;
+    }
+    return errorMessage;
+}
+//console.log(findPetByName(petsData, "Steven"));
 
 /**
  * findPetByCaretaker()
@@ -82,8 +98,15 @@ function findPetByName() {}
  *  findPetByCaretaker(pets, "Sabrina");
  *  > "Could not find pet with caretaker named 'Sabrina'."
  */
-function findPetByCaretaker() {}
-
+function findPetByCaretaker(pets, name) {
+    let errorMessage = `Could not find pet with caretaker named '${name}'.`;
+    if(!pets.length) return errorMessage;
+    for(let p of pets) {
+        if(p.caretakerName === name) return p;
+    }
+    return errorMessage;
+}
+console.log(findPetByCaretaker(petsData, "Sabrina"));
 /**
  * findPetByFavoriteFood()
  * -----------------------------
@@ -102,4 +125,10 @@ function findPetByCaretaker() {}
  *  findPetByFavoriteFood(pets, "steak");
  *  > null
  */
-function findPetByFavoriteFood() {}
+function findPetByFavoriteFood(pets, favFood) {
+    for(let p of pets) {
+        if(p.favoriteFood === favFood) return p.petName;
+    }
+    return null;
+}
+console.log(findPetByFavoriteFood(petsData, "steak"));

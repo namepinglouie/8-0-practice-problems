@@ -15,7 +15,17 @@ const petsData = require("./pets-data.js");
  * cat: 3
  * }
  */
-function speciesCount() {}
+function speciesCount(pets) {
+   let specieObj = {};
+   for(let p of pets) {
+       if(specieObj[p.species]) specieObj[p.species] += 1;
+       else {
+           specieObj[p.species] = 1;
+       }
+   }
+   return specieObj;
+}
+//console.log(speciesCount(petsData));
 
 /**
  * dueForCheckupCount()
@@ -32,8 +42,24 @@ function speciesCount() {}
  * false:2
  * }
  */
-function dueForCheckupCount() {}
-
+function dueForCheckupCount(pets) {
+    let checkUpObj = {};
+    for(let p of pets) {
+      if(p.dueForCheckup === true) {
+        if(checkUpObj["true"]) checkUpObj.true += 1;
+        else {
+          checkUpObj.true = 1;
+        }
+      } else {
+        if(checkUpObj["false"]) checkUpObj.false += 1;
+        else {
+          checkUpObj["false"] = 1;
+        }
+      }
+    }
+    return checkUpObj;
+}
+console.log(dueForCheckupCount(petsData));
 /**
  * friendsWithCount()
  * -----------------------------
@@ -50,4 +76,14 @@ function dueForCheckupCount() {}
  * 8: 1
  * }
  */
-function friendsWithCount() {}
+function friendsWithCount(pets) {
+    let friendObj = {};
+    for(let p of pets) {
+        if(friendObj[p.friendsWith.length]) friendObj[p.friendsWith.length]++;
+        else {
+            friendObj[p.friendsWith.length] = 1;
+        }
+    }
+    return friendObj;
+}
+console.log(friendsWithCount(petsData));
